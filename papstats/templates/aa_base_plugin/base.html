@@ -1,0 +1,12 @@
+{% extends 'allianceauth/base-bs5.html' %}
+{% load i18n %}
+
+{% block page_title %}{% translate "Page Title" %}{% endblock %}
+
+{% block content %}
+    <div class="allianceauth-example-plugin">
+        <h1 class="page-header text-center">{% translate "papstats" %}</h1>
+
+        {% block details %}{% endblock %}
+    </div>
+{% endblock %}
