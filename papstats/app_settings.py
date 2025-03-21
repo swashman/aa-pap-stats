@@ -1,6 +1,11 @@
 """App settings."""
 
 # Django
-from django.conf import settings
+from django.apps import apps
 
-EXAMPLE_SETTING_ONE = getattr(settings, "EXAMPLE_SETTING_ONE", None)
+
+def corpstats_active():
+    """
+    Check if securegroups is installed
+    """
+    return apps.is_installed("corpstats")

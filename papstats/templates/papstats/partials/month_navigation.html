@@ -1,0 +1,36 @@
+{% load i18n %}
+{% load papstats %}
+
+<div class="papstat-select-month my-3">
+    <a
+        class="btn btn-primary btn-sm"
+        href="{{ url_previous_month }}"
+        title="{% translate 'Previous month' %}"
+        data-bs-toggle="tooltip"
+    >
+        <i class="fa-solid fa-backward"></i>
+    </a>
+
+    <span class="papstats-label-statistics mx-3">
+        {{ month|month_name }} {{ year }}
+    </span>
+
+    {% if month_next_with_year <= month_current_with_year %}
+        <a
+            class="btn btn-primary btn-sm"
+            href="{{ url_next_month }}"
+            title="{% translate 'Next month' %}"
+            data-bs-toggle="tooltip"
+        >
+            <i class="fa-solid fa-forward"></i>
+        </a>
+        <a
+            class="btn btn-primary btn-sm"
+            href="{{ url_current_month }}"
+            title="{% translate 'Current month' %}"
+            data-bs-toggle="tooltip"
+        >
+            <i class="fa-solid fa-fast-forward"></i>
+        </a>
+    {% endif %}
+</div>

@@ -1,0 +1,35 @@
+{% extends "papstats/base.html" %}
+{% load static %}
+{% load i18n %}
+{% load humanize %}
+{% load form_filters %}
+
+{% block papstats %}
+    {% if form %}
+        <h2>Upload GSF CSV</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Upload</button>
+        </form>
+    {% endif %}
+    {% if form2 %}
+        <h2>Map Columns</h2>
+        <div class="form-container">
+            <form method="post" action="{% url 'papstats:csvupload' %}">
+                {% csrf_token %}
+                {% for column in columns %}
+                    <div class="form-row">
+                        <label for="{{ form2|get_field:column|get_field_id }}">{{ column }}</label>
+                        {{ form2|get_field:column }}
+                        <div class="form-check">
+                            {{ form2|get_ignore_field:column }}
+                            <label class="form-check-label" for="{{ form2|get_ignore_field:column|get_field_id }}">Ignore</label>
+                        </div>
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}

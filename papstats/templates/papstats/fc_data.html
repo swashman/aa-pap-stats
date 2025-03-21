@@ -1,0 +1,23 @@
+{% load i18n %}
+{% if staterror %}
+    <div class="alert alert-warning" role="alert">
+        {{ staterror }}
+    </div>
+{% else %}
+    <div class="container-fluid mt-1">
+        <div class="chart">
+
+            <img src="data:image/png;base64,{{ bar_chart }}" alt="Fleet Types By FC" class="img-fluid">
+
+        </div>
+        <div class="chart mt-5">
+            <img src="data:image/png;base64,{{ pie_chart }}" alt="Fleet Type Proportions" class="img-fluid">
+
+        </div>
+        <div class="chart mt-5">
+
+            <img src="data:image/png;base64,{{ line_chart }}" alt="Fleet Types over time" class="img-fluid">
+
+        </div>
+    </div>
+{% endif %}

@@ -3,9 +3,7 @@ from allianceauth import hooks
 from allianceauth.services.hooks import MenuItemHook, UrlHook
 
 # Pap Stats
-from papstats import __title__
-
-from . import urls
+from papstats import __title__, urls
 
 
 class ExampleMenuItem(MenuItemHook):

@@ -1,0 +1,57 @@
+{% load i18n %}
+{% load navactive %}
+
+<li class="nav-item">
+    <a
+        class="nav-link {% navactive request 'papstats:alliance' %}"
+        href="{% url 'papstats:alliance' %}"
+    >
+        {% translate "Alliance" %}
+    </a>
+</li>
+{% if perms.papstats.fc_access %}
+    <li class="nav-item">
+        <a
+            class="nav-link {% navactive request 'papstats:fc' %}"
+            href="{% url 'papstats:fc' %}"
+        >
+            {% translate "FC" %}
+        </a>
+    </li>
+{% endif %}
+
+{% if available|length <= 1 %}
+    <li class="nav-item">
+        <a class="nav-link {% navactive request 'papstats:corporation' %}"
+           href="{% url 'papstats:corporation'%}">
+            {% translate "Corporation" %}
+        </a>
+    </li>
+{% else %}
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle {% navactive request 'papstats:corporation' %}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {% translate "Corporations" %}
+        </a>
+        <ul class="dropdown-menu">
+            {% for corp in available %}
+                <li>
+                    <a class="dropdown-item"
+                       href="{% url 'papstats:corporation' corp.corporation_id %}">
+                        {{ corp.corporation_name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </li>
+{% endif %}
+
+{% if perms.papstats.admin_access %}
+    <li class="nav-item">
+        <a
+            class="nav-link {% navactive request 'papstats:admin' %}"
+            href="{% url 'papstats:admin' %}"
+        >
+            {% translate "Admin" %}
+        </a>
+    </li>
+{% endif %}

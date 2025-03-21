@@ -1,0 +1,36 @@
+{% load i18n %}
+
+<style>
+
+</style>
+
+
+{% if staterror %}
+    <div class="alert alert-warning" role="alert">
+        {{ staterror }}
+    </div>
+{% else %}
+    <div class="container mt-3">
+        <div class="chart">
+            <img src="data:image/png;base64,{{ combined_chart }}" alt="Combined Fleet Totals" class="img-fluid">
+        </div>
+        <div class="chart mt-5">
+            <img src="data:image/png;base64,{{ relative_chart }}" alt="Relative Participation" class="img-fluid">
+        </div>
+        <div class="chart  mt-5">
+            <img src="data:image/png;base64,{{ afat_chart }}" alt="AFAT Fleet Totals" class="img-fluid">
+        </div>
+        <div class="chart mt-5">
+            <img src="data:image/png;base64,{{ imp_chart }}" alt="IMP Fleet Totals" class="img-fluid">
+        </div>
+        <div class="chart mt-5">
+            <img src="data:image/png;base64,{{ pie_chart }}" alt="AFAT Fleet Type Proportions" class="img-fluid">
+        </div>
+        <div class="chart mt-5">
+            <img src="data:image/png;base64,{{ line_chart }}" alt="AFAT Total Fats Over Time" class="img-fluid">
+        </div>
+    </div>
+{% endif %}
+{% block extra_javascript %}
+
+{% endblock extra_javascript %}

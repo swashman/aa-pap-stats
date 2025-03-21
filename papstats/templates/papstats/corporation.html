@@ -1,0 +1,50 @@
+{% extends "papstats/base.html" %}
+{% load static %}
+{% load i18n %}
+{% load humanize %}
+
+{% block papstats %}
+    <h1 class="page-header text-center">{% translate "Statistics for " %} {{ corporation }}</h1>
+
+    {% if month == 1 %}
+        {% url "papstats:corporation" corpid year_prev 12 as url_previous_month %}
+    {% else %}
+        {% url "papstats:corporation" corpid year month_prev as url_previous_month %}
+    {% endif %}
+
+    {% if month == 12 %}
+        {% url "papstats:corporation" corpid year_next 1 as url_next_month %}
+        {% url "papstats:corporation" corpid year_current month_current as url_current_month %}
+    {% else %}
+        {% url "papstats:corporation" corpid year month_next as url_next_month %}
+        {% url "papstats:corporation" corpid year_current month_current as url_current_month %}
+    {% endif %}
+
+    {% include "papstats/partials/month_navigation.html" with url_previous_month=url_previous_month url_next_month=url_next_month url_current_month=url_current_month %}
+
+    <div id="corp-data"
+         hx-get="{% url 'papstats:corporation_data' corpid year month %}"
+         hx-trigger="load" >
+        {% include "altcorp/partials/spinner.html" %}
+    </div>
+{% endblock %}
+
+{% block extra_javascript %}
+    {{ block.super }}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the current URL hash
+            const hash = window.location.hash; // e.g., "#raw"
+            if (hash) {
+                // Find the tab button matching the hash
+                const tabTrigger = document.querySelector(`[data-bs-target="${hash}"]`);
+                if (tabTrigger) {
+                    // Use Bootstrap's Tab API to activate the tab
+                    const tab = new bootstrap.Tab(tabTrigger);
+                    tab.show();
+                }
+            }
+        });
+    </script>
+{% endblock %}
