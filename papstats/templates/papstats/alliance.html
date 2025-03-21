@@ -24,6 +24,6 @@
     <div id="alliance-data"
          hx-get="{% url 'papstats:alliance_data' alliance_id year month %}"
          hx-trigger="load" >
-        {% include "altcorp/partials/spinner.html" %}
+        {% include "papstats/partials/spinner.html" %}
     </div>
 {% endblock %}
