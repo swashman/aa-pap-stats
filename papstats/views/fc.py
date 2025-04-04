@@ -14,11 +14,10 @@ import pandas as pd
 # Django
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User
-from django.core.exceptions import BadRequest, PermissionDenied
+from django.core.exceptions import PermissionDenied
 from django.db.models import Sum
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
-from django.utils.timezone import now
 
 # Alliance Auth
 from allianceauth.services.hooks import get_extension_logger

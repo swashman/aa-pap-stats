@@ -2,7 +2,7 @@
 from django.core.management.base import BaseCommand
 
 # Pap Stats
-from papstats.tasks import process_afat_data_task, run_last_month_task
+from papstats.tasks import process_afat_data_task
 
 
 class Command(BaseCommand):

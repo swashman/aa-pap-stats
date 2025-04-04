@@ -16,7 +16,11 @@ from django.db import IntegrityError, transaction
 
 # Alliance Auth
 from allianceauth.authentication.models import CharacterOwnership, UserProfile
-from allianceauth.eveonline.models import EveCharacter, EveCorporationInfo
+from allianceauth.eveonline.models import (
+    EveAllianceInfo,
+    EveCharacter,
+    EveCorporationInfo,
+)
 from allianceauth.services.hooks import get_extension_logger
 
 # Pap Stats
@@ -35,7 +39,7 @@ logger = get_extension_logger(__name__)
 def run_last_month_task():
     # Get last month's date
     last_month_date = datetime.today() - relativedelta(months=1)
-
+    logger.debug(f"Last month date: {last_month_date}")
     # Extract month and year
     last_month = last_month_date.month
     last_year = last_month_date.year
@@ -219,6 +223,11 @@ def process_afat_data_task(month, year):
                 f"AuthenticationUserprofile.DoesNotExist: User profile not found for user {user.username}."
             )
             continue
+        except EveAllianceInfo.DoesNotExist:
+            logger.error(
+                f"EveonlineEveallianceinfo.DoesNotExist: Alliance not found for main character {main_character.character_name}."
+            )
+            continue
 
         fatlink = afat_fat.fatlink
 
@@ -242,9 +251,22 @@ def process_afat_data_task(month, year):
             )
         except MonthlyFleetType.DoesNotExist:
             logger.error(
-                f"MonthlyFleetType not found for name={fleet_type_name}, source=afat, month={month}, year={year}"
+                f"MonthlyFleetType not found for name={fleet_type_name}, source=afat, month={month}, year={year}. Falling back to 'Unknown'."
             )
-            fleet_type = None
+            try:
+                fleet_type = MonthlyFleetType.objects.get(
+                    name="Unknown",
+                    source="afat",
+                    month=month,
+                    year=year,
+                )
+            except MonthlyFleetType.DoesNotExist:
+                logger.critical(
+                    f"Fallback MonthlyFleetType 'Unknown' not found for source=afat, month={month}, year={year}."
+                )
+                fleet_type = (
+                    None  # If even "Unknown" is missing, keep it None as a last resort.
+                )
 
         try:
             with transaction.atomic():

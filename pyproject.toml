@@ -34,9 +34,6 @@ dependencies = [
     "pandas",
     "plotly",
 ]
-optional-dependencies.test = [
-    "allianceauth-corpstats-two",
-]
 
 urls.Changelog = "https://gitlab.com/lawn-alliance/aa-pap-stats/-/blob/master/CHANGELOG.md"
 urls.Documentation = "https://gitlab.com/lawn-alliance/aa-pap-stats/-/blob/master/README.md"

@@ -23,7 +23,7 @@
 {% if available|length <= 1 %}
     <li class="nav-item">
         <a class="nav-link {% navactive request 'papstats:corporation' %}"
-           href="{% url 'papstats:corporation'%}">
+            href="{% url 'papstats:corporation'%}">
             {% translate "Corporation" %}
         </a>
     </li>
@@ -36,7 +36,7 @@
             {% for corp in available %}
                 <li>
                     <a class="dropdown-item"
-                       href="{% url 'papstats:corporation' corp.corporation_id %}">
+                        href="{% url 'papstats:corporation' corp.corporation_id %}">
                         {{ corp.corporation_name }}
                     </a>
                 </li>

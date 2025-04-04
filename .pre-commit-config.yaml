@@ -291,6 +291,7 @@ repos:
         description: Check for errors and code smells in Python code.
         args:
           - --py-version=3.10  # Minimum required Python version for AA. Update as needed.
+          - --fail-under=9
 
   - repo: https://github.com/abravalheri/validate-pyproject
     rev: f45606bad11ad90ddac1212fa83ebe2a4d724351  # frozen: v0.23

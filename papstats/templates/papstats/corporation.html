@@ -23,8 +23,8 @@
     {% include "papstats/partials/month_navigation.html" with url_previous_month=url_previous_month url_next_month=url_next_month url_current_month=url_current_month %}
 
     <div id="corp-data"
-         hx-get="{% url 'papstats:corporation_data' corpid year month %}"
-         hx-trigger="load" >
+        hx-get="{% url 'papstats:corporation_data' corpid year month %}"
+        hx-trigger="load" >
         {% include "papstats/partials/spinner.html" %}
     </div>
 {% endblock %}
