@@ -127,7 +127,7 @@ repos:
         description: Ensure that files end with a newline.
 
   - repo: https://github.com/eslint/eslint
-    rev: 3e8a9a55e101c07933d045677682783f6583a0ee  # frozen: v9.21.0
+    rev: d71ebb3dd2a0d73188c13f47f93d3ec1f9006737  # frozen: v9.30.1
     hooks:
       - id: eslint
         name: ESLint
@@ -139,7 +139,7 @@ repos:
 #          - globals@15.14.0  # https://github.com/sindresorhus/globals/releases/latest
 
   - repo: https://github.com/thibaudcolas/pre-commit-stylelint
-    rev: adbd5eb765476b51bf2d2621a7492053153a4d06  # frozen: v16.14.1
+    rev: 92e3fdcc01235f241dad20cd8891cb414600ba15  # frozen: v16.21.1
     hooks:
       - id: stylelint
         name: Stylelint
@@ -180,14 +180,14 @@ repos:
         description: Enforce that python3.6+ type annotations are used instead of type comments.
 
   - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
-    rev: c764d820bfc7d772ae9cc86b4696c375aee944a4  # frozen: 3.2.0
+    rev: 3bea62898235acc3f05c1d9c33023345f6cd3c6f  # frozen: 3.2.1
     hooks:
       - id: editorconfig-checker
         name: EditorConfig Checker
         description: Check for compliance with the definitions in the EditorConfig file.
 
   - repo: https://github.com/adamchainz/django-upgrade
-    rev: 43c3c16dc6ee2c9dcedcca6930974b47f415c8b2  # frozen: 1.23.1
+    rev: 700530171ecf380bc829a64388f49d14ecd61c53  # frozen: 1.25.0
     hooks:
       - id: django-upgrade
         name: Django upgrade
@@ -196,7 +196,7 @@ repos:
           - --target-version=4.2  # Minimum supported Django version for AA. Update as needed.
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: ce40a160603ab0e7d9c627ae33d7ef3906e2d2b2  # frozen: v3.19.1
+    rev: 37bfa06d791fd38fb4e54910b36a2ff57641b074  # frozen: v3.20.0
     hooks:
       - id: pyupgrade
         name: PyUpgrade
@@ -205,7 +205,7 @@ repos:
           - --py310-plus  # Minimum required Python version for AA. Update as needed.
 
   - repo: https://github.com/pycqa/flake8
-    rev: bddd87797f8dfc07d2a10c894776018d9bec590b  # frozen: 7.1.2
+    rev: d93590f5be797aabb60e3b09f2f52dddb02f349f  # frozen: 7.3.0
     hooks:
       - id: flake8
         name: Flake8
@@ -273,7 +273,7 @@ repos:
         description: Format the tox.ini file.
 
   - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: 6b2f3b33754de7a442043dc312fc5a0e473086d2  # frozen: v2.5.0
+    rev: 8184a5b72f4a8fcd003b041ecb04c41a9f34fd2b  # frozen: v2.6.0
     hooks:
       - id: pyproject-fmt
         name: pyproject.toml formatter
@@ -284,7 +284,7 @@ repos:
           - tox==4.24.1  # https://github.com/tox-dev/tox/releases/latest
 
   - repo: https://github.com/pylint-dev/pylint
-    rev: c2b01c3d0b6410d4c93eb1f32fb28f2116b1e68f  # frozen: v3.3.4
+    rev: f798a4a3508bcbb8ad0773ae14bf32d28dcfdcbe  # frozen: v3.3.7
     hooks:
       - id: pylint
         name: Pylint
@@ -294,14 +294,14 @@ repos:
           - --fail-under=9
 
   - repo: https://github.com/abravalheri/validate-pyproject
-    rev: f45606bad11ad90ddac1212fa83ebe2a4d724351  # frozen: v0.23
+    rev: 78f5e0f104cfa803d0597eaa924b4de3becd3e3e  # frozen: v0.24.1
     hooks:
       - id: validate-pyproject
         name: Validate pyproject.toml
         description: Validate the pyproject.toml file.
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 828a213a1dd17aa9862aab706e3162c13281ff93  # frozen: 0.31.2
+    rev: 54da05914997e6b04e4db33ed6757d744984c68b  # frozen: 0.33.2
     hooks:
       - id: check-github-actions
         name: Check GitHub Actions
